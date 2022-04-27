@@ -1,4 +1,3 @@
-//Kod som Emelie skrivit
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -32,6 +31,14 @@ app.get('/artists', (req, res) => {
 app.get('/artists/:artist', (req, res) => {
   let sql = 'SELECT * FROM artist WHERE artistName = ?'
   connection.query(sql, [req.params.artist], function (error, results, fields) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.get('/artists', (req, res) => {
+  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
+  connection.query(sql,[req.params.artist], function (error, results, fields) {
     if (error) throw error
     res.json(results)
   })
