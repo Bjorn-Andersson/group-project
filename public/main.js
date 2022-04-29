@@ -6,27 +6,22 @@ function append(parent, el) {
   return parent.appendChild(el)
 }
 
-const card = document.getElementById('artist-card')
-const artistImg = document.getElementById('artist-img')
-
 const url = 'http://localhost:3000/artists'
+
 fetch(url)
   .then(resp => resp.json())
   .then(function (data) {
     console.log(data)
-    let artist = data
-    return artist.map(function (data) {
-      //artistnamn
-      let h3 = createNode('h3')
-      h3.innerHTML = `<a href="./artist.html?artist=${data.artistName}">${data.artistName}</a>`
-      append(card, h3)
+    let artists = data
+    return artists.map(function (data) {
 
-      //artist bilder
-      let src = `img/${data.artistPhoto}`
-
-      let img = createNode('img')
-          img.src = src
-          append(artistImg, img)
+      for (i = 0; i < 1; i++) {
+        let src = `img/${data.artistPhoto}`
+        let div = document.createElement('div')
+        div.id = 'carddiv'
+        div.innerHTML = `<h3><a href="./artist.html?artist=${data.artistName}">${data.artistName}</a></h3> <img src="${src}">`
+        document.body.appendChild(div)
+      }
     })
   })
   .catch(function (error) {
