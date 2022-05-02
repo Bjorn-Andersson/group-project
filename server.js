@@ -28,17 +28,44 @@ app.get('/artists', (req, res) => {
   })
 })
 
-app.get('/artists/:artist', (req, res) => {
-  let sql = 'SELECT * FROM artist WHERE artistName = ?'
+app.get('/artists', (req, res) => {
+  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
   connection.query(sql, [req.params.artist], function (error, results, fields) {
     if (error) throw error
     res.json(results)
   })
 })
 
-app.get('/artists', (req, res) => {
-  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
-  connection.query(sql,[req.params.artist], function (error, results, fields) {
+app.get('/artists/:artist', (req, res) => {
+  let sql =
+    'SELECT * FROM artist join album on artistID = albumArtistID WHERE artistName = ?'
+  connection.query(sql, [req.params.artist], function (error, results) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.get('/artists/:artist/img', (req, res) => {
+  let sql = 'SELECT artistPhoto FROM artist WHERE artistName = ?'
+  connection.query(sql, [req.params.artist], function (error, results) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.get('/artists/:artist/:album', (req, res) => {
+  let sql =
+    'select * from artist join album on artistID = albumArtistID join song on album.albumID = song.songAlbumID where albumTitle = ?'
+  connection.query(sql, [req.params.album], function (error, results) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.get('/artists/:artist/:album/:song', (req, res) => {
+  let sql =
+    'select * from album join song on album.albumID = song.songAlbumID where songTitle = ?'
+  connection.query(sql, [req.params.song], function (error, results) {
     if (error) throw error
     res.json(results)
   })

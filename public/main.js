@@ -6,10 +6,8 @@ function append(parent, el) {
   return parent.appendChild(el)
 }
 
-const card = document.getElementById('artist-card')
-const artistImg = document.getElementById('artist-img')
-
 const url = 'http://localhost:3000/artists'
+
 fetch(url)
   .then(resp => resp.json())
   .then(function (data) {
