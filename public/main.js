@@ -25,8 +25,8 @@ fetch(url)
       let src = `img/${data.artistPhoto}`
 
       let img = createNode('img')
-          img.src = src
-          append(artistImg, img)
+      img.src = src
+      append(artistImg, img)
     })
   })
   .catch(function (error) {
