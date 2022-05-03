@@ -26,7 +26,7 @@ fetch(url)
     let entry = data
     return entry.map(function (data) {
       let back = document.querySelector('.backLink')
-      back.innerHTML = `<a href="./artist.html?artist=${data.artistName}">back</a>`
+      back.innerHTML = `<a href="./artist.html?artist=${data.artistName}">Tillbaka</a>`
     })
   })
   .catch(function (error) {

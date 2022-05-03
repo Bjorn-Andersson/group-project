@@ -39,8 +39,15 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
 #filter p {
   margin-bottom: 0;
   margin-right: 10px;
   font-size: 17px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

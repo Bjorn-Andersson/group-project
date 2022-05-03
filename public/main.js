@@ -16,6 +16,7 @@ fetch(url)
       let src = `img/${data.artistPhoto}`
       let div = document.createElement('div')
       div.id = 'carddiv'
+      div.className = 'singers'
       div.innerHTML = `<h3><a href="./artist.html?artist=${data.artistName}">${data.artistName}</a></h3> <img src="${src}">`
       document.body.appendChild(div)
     })
@@ -65,7 +66,7 @@ searchInput.addEventListener('keyup', e => {
   for (const singerElement of storeSingers) {
     let singers = singerElement.textContent.toLowerCase()
     if (singers.includes(searchQuery)) {
-      singerElement.style.display = 'block'
+      singerElement.style.display = 'flex'
     } else {
       singerElement.style.display = 'none'
     }
