@@ -19,57 +19,53 @@ fetch(url)
     console.log(error)
   })
 
-  const url_db = 'http://localhost:3000/comments'
+const url_db = 'http://localhost:3000/comments'
 
 fetch(url_db)
-  .then((resp) => resp.json())
-  .then(function(data) {
-      console.log(data.comments);
-      let comment = data.comments;
-      return comment.map(function(data) {
-          let commentDiv = document.createElement('div')
-          commentDiv.id = 'commentDiv'
-          commentDiv.innerHTML = `<h5>Namn: ${data.name}</h5> <p>${data.comment}</p>`
-          document.body.appendChild(commentDiv)
-      })
+  .then(resp => resp.json())
+  .then(function (data) {
+    console.log(data.comments)
+    let comment = data.comments
+    return comment.map(function (data) {
+      let commentDiv = document.createElement('div')
+      commentDiv.id = 'commentDiv'
+      commentDiv.innerHTML = `<h5>Namn: ${data.name}</h5> <p>${data.comment}</p>`
+      document.body.appendChild(commentDiv)
+    })
   })
-  .catch(function(error) {
-      console.log(error);
-  });
+  .catch(function (error) {
+    console.log(error)
+  })
 
 const dbForm = document.getElementById('formComment')
 const dbName = document.getElementById('name')
 const dbComment = document.getElementById('comment')
 
-function newArtist(event){
-  event.preventDefault();
-  let name = dbName.value;
-  let comment = dbComment.value;
-  location.reload();
+function newArtist(event) {
+  event.preventDefault()
+  let name = dbName.value
+  let comment = dbComment.value
+  location.reload()
 
-
-async function postData(url = '', data = {}) {
-  const response = await fetch(url, {
+  async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify({name:name, comment:comment})
-  });
-  return response.json();
+      body: JSON.stringify({ name: name, comment: comment })
+    })
+    return response.json()
+  }
 
+  postData('http://localhost:3000/comments').then(data => {
+    console.log(data)
+  })
 }
 
-postData('http://localhost:3000/comments')
-  .then((data) => {
-      console.log(data);
-  });
-
-}
-
-dbForm.addEventListener('submit', newArtist, false);
+dbForm.addEventListener('submit', newArtist, false)

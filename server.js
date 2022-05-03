@@ -123,8 +123,8 @@ app.post('/comments', (req, res) => {
 
   comments.insertOne(
     {
-      name: name,
-      comment: comment
+      name,
+      comment
     },
     (err, result) => {
       if (err) throw err
