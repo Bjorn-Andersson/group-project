@@ -9,7 +9,7 @@ fetch(url)
     let entry = data
     return entry.map(function (data) {
       let li = document.createElement('li')
-      li.innerHTML = `<a href="./album.html?artist=${data.artistName}&album=${data.albumTitle}">${data.albumTitle}</a>`
+      li.innerHTML = `<a class="link" href="./album.html?artist=${data.artistName}&album=${data.albumTitle}">${data.albumTitle}</a>`
       document.querySelector('#ul').appendChild(li)
       document.querySelector('.center').textContent = data.artistName
       document.querySelector('#artistTitle').textContent = data.artistName

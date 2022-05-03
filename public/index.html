@@ -21,9 +21,16 @@
         <p>Miniwiki för musik</p>
       </div>
 
-      <div id="container">
+      <div id="container md-form mt-0">
         <div id="search">
-          <input id="searchInput" type="text" placeholder="Sök på Artist" />
+          <form>
+            <input
+              class="form-control"
+              id="searchInput"
+              type="text"
+              placeholder="Sök på Artist"
+            />
+          </form>
         </div>
       </div>
 
@@ -31,7 +38,7 @@
         <p>Filter:</p>
         <div class="aligner">
           <form>
-            <select id="selectGenre">
+            <select class="form-control" id="selectGenre">
               <option>Välj genre...</option>
             </select>
           </form>
