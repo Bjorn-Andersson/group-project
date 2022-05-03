@@ -23,42 +23,29 @@ fetch(url)
   })
   .catch(function (error) {
     console.log(error)
-<<<<<<< HEAD
-  })
-=======
   })
 
-fetch(url + '/' + 'genre')
-  .then(resp => resp.json())
-  .then(function (data) {
-    console.log(data)
-    let artists = data
-    return artists.map(function (data) {
-      let option = document.createElement('option')
-      let select = document.querySelector('#selectGenre')
-      option.innerHTML = data.genreName
-      append(select, option)
-    })
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
+const searchInput = document.getElementById("searchInput");
 
-  const url_db = 'http://localhost:3000/comments'
+const storeSingers = document.getElementsByClassName("singers");
 
-  fetch(url_db)
-  .then((resp) => resp.json())
-  .then(function(data) {
-      console.log(data.comments);
-      let comments = data.comments;
-      return comments.map(function(data) {
-          let commentDiv = document.getElementById('comments')
-          commentDiv.innerHTML = `<form>
+searchInput.addEventListener("keyup", (e) => {
+  const {
+    value
+  } = e.target;
 
-          </form>`
-      })
-  })
-  .catch(function(error) {
-      console.log(error);
-  });
->>>>>>> ab4644e0dcd40f8bd66df251e54e3da6067301cb
+  const searchQuery = value.toLowerCase();
+
+  for (const singerElement of storeSingers) {
+
+    let singers = singerElement.textContent.toLowerCase();
+
+    if (singers.includes(searchQuery)) {
+
+      singerElement.style.display = "block";
+    } else {
+
+      singerElement.style.display = "none";
+    }
+  }
+});
