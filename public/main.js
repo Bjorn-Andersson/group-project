@@ -14,7 +14,6 @@ fetch(url)
     console.log(data)
     let artists = data
     return artists.map(function (data) {
-
       for (i = 0; i < 1; i++) {
         let src = `img/${data.artistPhoto}`
         let div = document.createElement('div')
