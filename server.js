@@ -11,6 +11,26 @@ const connection = mysql.createConnection({
   database: 'groupproject'
 })
 
+const mongo = require("mongodb").MongoClient
+const db_url = "mongodb://localhost:27017"
+let db
+
+mongo.connect(
+    db_url,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    },
+    (err, client) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        db = client.db("comments")
+        comments = db.collection("comments")
+    }
+)
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -70,3 +90,18 @@ app.get('/artists/:artist/:album/:song', (req, res) => {
     res.json(results)
   })
 })
+
+//MongoDB
+app.get("/comments", (req, res) => {
+  comments.find().toArray((err, items) => {
+    if (err) throw err
+    res.json({comments: items})
+  })
+  console.log('Hej')
+})
+
+app.post
+
+app.delete
+
+app.update
