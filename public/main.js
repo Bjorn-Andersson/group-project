@@ -7,7 +7,6 @@ function append(parent, el) {
 }
 
 const url = 'http://localhost:3000/artists'
-
 fetch(url)
   .then(resp => resp.json())
   .then(function (data) {
@@ -41,20 +40,34 @@ fetch(url + '/' + 'genre')
     console.log(error)
   })
 
-  const url_db = 'http://localhost:3000/comments'
-
-  fetch(url_db)
-  .then((resp) => resp.json())
-  .then(function(data) {
-      console.log(data.comments);
-      let comments = data.comments;
-      return comments.map(function(data) {
-          let commentDiv = document.getElementById('comments')
-          commentDiv.innerHTML = `<form>
+const url_db = 'http://localhost:3000/comments'
+fetch(url_db)
+  .then(resp => resp.json())
+  .then(function (data) {
+    console.log(data.comments)
+    let comments = data.comments
+    return comments.map(function (data) {
+      let commentDiv = document.getElementById('comments')
+      commentDiv.innerHTML = `<form>
 
           </form>`
-      })
+    })
   })
-  .catch(function(error) {
-      console.log(error);
-  });
+  .catch(function (error) {
+    console.log(error)
+  })
+
+const searchInput = document.getElementById('searchInput')
+const storeSingers = document.getElementsByClassName('singers')
+searchInput.addEventListener('keyup', e => {
+  const { value } = e.target
+  const searchQuery = value.toLowerCase()
+  for (const singerElement of storeSingers) {
+    let singers = singerElement.textContent.toLowerCase()
+    if (singers.includes(searchQuery)) {
+      singerElement.style.display = 'block'
+    } else {
+      singerElement.style.display = 'none'
+    }
+  }
+})

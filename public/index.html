@@ -11,36 +11,46 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>Hemsida</title>
   </head>
 
   <body>
     <main>
       <div id="h1div">
-        <h1>Musiktjofräs</h1>
+        <h1>Artistdatabas</h1>
         <p>Miniwiki för musik</p>
       </div>
 
-      <div id="search">
-        <div class="md-form mt-0">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Sök på artist"
-            aria-label="Search"
-          />
+      <div id="container">
+        <div id="search">
+          <input id="searchInput" type="text" placeholder="Sök på Artist" />
         </div>
+
+        <ul id="results">
+          <li class="singers">AC-DC</li>
+          <li class="singers">Black Arrows</li>
+          <li class="singers">Beyonce</li>
+          <li class="singers">Coldplay</li>
+          <li class="singers">Eminem</li>
+          <li class="singers">Frank Sinatra</li>
+          <li class="singers">KISS</li>
+          <li class="singers">Johnny Cash</li>
+          <li class="singers">Michael Jackson</li>
+          <li class="singers">Queen</li>
+          <li class="singers">Snoop Dogg</li>
+          <li class="singers">The Beatles</li>
+          <li class="singers">Linkin Park</li>
+        </ul>
       </div>
 
-      <div id="filter">
-        <p>Filter:</p>
-        <div class="aligner">
-          <form>
-            <select id="selectGenre">
-              <option>Select genre...</option>
-            </select>
-          </form>
-        </div>
+      <div id="filter"></div>
+      <p>Filter:</p>
+      <div class="aligner">
+        <form>
+          <select id="selectGenre">
+            <option>Välj genre...</option>
+          </select>
+        </form>
       </div>
     </main>
     <script src="main.js"></script>
