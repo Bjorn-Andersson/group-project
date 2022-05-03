@@ -12,22 +12,35 @@
   align-items: center;
 }
 
- img {
-   height: 200px;
-   width: 300px;
-   object-fit: cover;
- }
+img {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+}
 
- h3 {
-   margin: auto;
-   padding-top: 80px;
- }
+h3 {
+  margin: auto;
+  padding-top: 80px;
+}
 
- #carddiv {
-   display: flex;
-   justify-content: space-between;
-   margin: 10px 100px 10px 100px;
-   border: solid black 2px;
-   border-radius: 5px;
-   box-shadow: 10px 5px 5px rgb(44, 2, 1);
- }
+#carddiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 100px 10px 100px;
+  border: solid black 2px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgb(44, 2, 1);
+}
+
+#filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#filter p {
+  margin-bottom: 0;
+  margin-right: 10px;
+  font-size: 17px;
+}

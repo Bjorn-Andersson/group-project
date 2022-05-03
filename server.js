@@ -11,24 +11,24 @@ const connection = mysql.createConnection({
   database: 'groupproject'
 })
 
-const mongo = require("mongodb").MongoClient
-const db_url = "mongodb://localhost:27017"
+const mongo = require('mongodb').MongoClient
+const db_url = 'mongodb://localhost:27017'
 let db
 
 mongo.connect(
-    db_url,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    },
-    (err, client) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        db = client.db("comments")
-        comments = db.collection("comments")
+  db_url,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  (err, client) => {
+    if (err) {
+      console.error(err)
+      return
     }
+    db = client.db('comments')
+    comments = db.collection('comments')
+  }
 )
 
 app.use(bodyParser.json())
@@ -40,9 +40,25 @@ const port = 3000
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
+// SQL ENDPOINTS START ---------------------------------------------------------------------
 app.get('/artists', (req, res) => {
-  let sql = 'SELECT * FROM artist'
+  let sql = 'SELECT * from artist'
   connection.query(sql, function (error, results, fields) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+app.get('/artists/genre', (req, res) => {
+  let sql = 'SELECT * from genre'
+  connection.query(sql, function (error, results, fields) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.get('/artists', (req, res) => {
+  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
+  connection.query(sql, [req.params.artist], function (error, results, fields) {
     if (error) throw error
     res.json(results)
   })
@@ -53,14 +69,6 @@ app.delete('/artists', (req, res) => {
   connection.query(sql, [req.body.artistID], function (error) {
     if (error) throw error
     res.end('The artist has retired, permanently')
-  })
-})
-
-app.get('/artists', (req, res) => {
-  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
-  connection.query(sql, [req.params.artist], function (error, results, fields) {
-    if (error) throw error
-    res.json(results)
   })
 })
 
@@ -99,17 +107,63 @@ app.get('/artists/:artist/:album/:song', (req, res) => {
   })
 })
 
-//MongoDB
-app.get("/comments", (req, res) => {
+// SQL ENDPOINTS END -----------------------------------------------------------------------
+
+//MongoDB ENDPOINTS START ------------------------------------------------------------------
+app.get('/comments', (req, res) => {
   comments.find().toArray((err, items) => {
     if (err) throw err
-    res.json({comments: items})
+    res.json({ comments: items })
   })
-  console.log('Hej')
 })
 
-app.post
+app.post('/comments', (req, res) => {
+  let name = req.body.name
+  let comment = req.body.comment
 
-app.delete
+  comments.insertOne(
+    {
+      name: name,
+      comment: comment
+    },
+    (err, result) => {
+      if (err) throw err
+      console.log(result)
+      res.json({ ok: true })
+    }
+  )
+})
 
-app.update
+app.delete('/comments', (req, res) => {
+  let name = req.body.name
+
+  comments.deleteOne(
+    {
+      name: name
+    },
+    (err, result) => {
+      if (err) throw err
+      res.json({ ok: true })
+    }
+  )
+})
+
+app.put('/comments', (req, res) => {
+  let name = req.body.name
+  let comment = req.body.comment
+
+  comments.updateOne(
+    { name: name },
+    {
+      $set: {
+        name: name,
+        comment: comment
+      }
+    },
+    (err, result) => {
+      if (err) throw err
+      res.json({ ok: true })
+    }
+  )
+})
+//MongoDB ENDPOINTS END -------------------------------------------------------------------
