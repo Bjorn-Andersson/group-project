@@ -48,14 +48,6 @@ app.get('/artists', (req, res) => {
     res.json(results)
   })
 })
-app.post('/artists', (req, res) => {
-  let sql = 'INSERT INTO artist(artistName) VALUES (?)'
-  const params = [req.body.artistName]
-  connection.query(sql, params, function (error, data) {
-    if (error) throw error
-    res.json(data)
-  })
-})
 app.get('/artists/genre', (req, res) => {
   let sql = 'SELECT * from genre'
   connection.query(sql, function (error, results, fields) {
