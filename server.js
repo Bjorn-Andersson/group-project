@@ -28,6 +28,14 @@ app.get('/artists', (req, res) => {
   })
 })
 
+app.delete('/artists', (req, res) => {
+  let sql = 'CALL DeleteArtist(?)'
+  connection.query(sql, [req.body.artistID], function (error) {
+    if (error) throw error
+    res.end('The artist has retired, permanently')
+  })
+})
+
 app.get('/artists', (req, res) => {
   let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
   connection.query(sql, [req.params.artist], function (error, results, fields) {
