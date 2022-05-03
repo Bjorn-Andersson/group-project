@@ -115,13 +115,55 @@ app.get('/comments', (req, res) => {
     if (err) throw err
     res.json({ comments: items })
   })
-  console.log('Hej')
 })
 
-app.post
+app.post('/comments', (req, res) => {
+  let name = req.body.name
+  let comment = req.body.comment
 
-app.delete
+  comments.insertOne(
+    {
+      name: name,
+      comment: comment
+    },
+    (err, result) => {
+      if (err) throw err
+      console.log(result)
+      res.json({ ok: true })
+    }
+  )
+})
 
-app.update
+app.delete('/comments', (req, res) => {
+  let name = req.body.name
 
+  comments.deleteOne(
+    {
+      name: name
+    },
+    (err, result) => {
+      if (err) throw err
+      res.json({ ok: true })
+    }
+  )
+})
+
+app.put('/comments', (req, res) => {
+  let name = req.body.name
+  let comment = req.body.comment
+
+  comments.updateOne(
+    { name: name },
+    {
+      $set: {
+        name: name,
+        comment: comment
+      }
+    },
+    (err, result) => {
+      if (err) throw err
+      res.json({ ok: true })
+    }
+  )
+})
 //MongoDB ENDPOINTS END -------------------------------------------------------------------
