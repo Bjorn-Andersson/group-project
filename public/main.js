@@ -27,3 +27,21 @@ fetch(url)
   .catch(function (error) {
     console.log(error)
   })
+
+  const url_db = 'http://localhost:3000/comments'
+
+  fetch(url_db)
+  .then((resp) => resp.json())
+  .then(function(data) {
+      console.log(data.comments);
+      let comments = data.comments;
+      return comments.map(function(data) {
+          let commentDiv = document.getElementById('comments')
+          commentDiv.innerHTML = `<form>
+
+          </form>`
+      })
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
