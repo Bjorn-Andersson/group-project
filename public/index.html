@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Hemsida</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <title>Document</title>
-</head>
-
-<body>
-  <main>
-    <div id="h1div">
-      <h1>Musiktjofräs</h1>
-      <p>Miniwiki för musik</p>
-    </div>
-
-   <div id="container">
-      <div id="search">
-        <input id="searchInput" type="text" placeholder="Sök på Artist">
+  <body>
+    <main>
+      <div id="h1div">
+        <h1>Artistdatabas</h1>
+        <p>Miniwiki för musik</p>
       </div>
 
-      <ul id="results">
-        <li class="singers">AC-DC</li>
-        <li class="singers">Black Arrows</li>
-        <li class="singers">Beyonce</li>
-        <li class="singers">Coldplay</li>
-        <li class="singers">Eminem</li>
-        <li class="singers">Frank Sinatra</li>
-        <li class="singers">KISS</li>
-        <li class="singers">Johnny Cash</li>
-        <li class="singers">Michael Jackson</li>
-        <li class="singers">Queen</li>
-        <li class="singers">Snoop Dogg</li>
-        <li class="singers">The Beatles</li>
-        <li class="singers">Linkin Park</li>
-      </ul>
+      <div id="container">
+        <div id="search">
+          <input id="searchInput" type="text" placeholder="Sök på Artist" />
+        </div>
 
-    </div>
+        <ul id="results">
+          <li class="singers">AC-DC</li>
+          <li class="singers">Black Arrows</li>
+          <li class="singers">Beyonce</li>
+          <li class="singers">Coldplay</li>
+          <li class="singers">Eminem</li>
+          <li class="singers">Frank Sinatra</li>
+          <li class="singers">KISS</li>
+          <li class="singers">Johnny Cash</li>
+          <li class="singers">Michael Jackson</li>
+          <li class="singers">Queen</li>
+          <li class="singers">Snoop Dogg</li>
+          <li class="singers">The Beatles</li>
+          <li class="singers">Linkin Park</li>
+        </ul>
+      </div>
 
-    <div id="filter"></div>
-    <p>Filter:</p>
-    <div class="aligner">
-      <form>
-        <select id="selectGenre">
-          <option>Select genre...</option>
-        </select>
-      </form>
-    </div>
-  </main>
-  <script src="main.js"></script>
-</body>
-
+      <div id="filter"></div>
+      <p>Filter:</p>
+      <div class="aligner">
+        <form>
+          <select id="selectGenre">
+            <option>Välj genre...</option>
+          </select>
+        </form>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
 </html>

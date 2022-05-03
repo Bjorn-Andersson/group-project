@@ -7,7 +7,6 @@ function append(parent, el) {
 }
 
 const url = 'http://localhost:3000/artists'
-
 fetch(url)
   .then(resp => resp.json())
   .then(function (data) {
@@ -25,35 +24,50 @@ fetch(url)
     console.log(error)
   })
 
-  $(document).ready(function(){
-    $('input.typeahead').typeahead({
-    name: 'typeahead',
-    remote: 'http://localhost:3000/search?key=%QUERY',
-    limit: 10
-    });
-    });
+fetch(url + '/' + 'genre')
+  .then(resp => resp.json())
+  .then(function (data) {
+    console.log(data)
+    let artists = data
+    return artists.map(function (data) {
+      let option = document.createElement('option')
+      let select = document.querySelector('#selectGenre')
+      option.innerHTML = data.genreName
+      append(select, option)
+    })
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
 
-const searchInput = document.getElementById("searchInput");
+const url_db = 'http://localhost:3000/comments'
+fetch(url_db)
+  .then(resp => resp.json())
+  .then(function (data) {
+    console.log(data.comments)
+    let comments = data.comments
+    return comments.map(function (data) {
+      let commentDiv = document.getElementById('comments')
+      commentDiv.innerHTML = `<form>
 
-const storeSingers = document.getElementsByClassName("singers");
+          </form>`
+    })
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
 
-searchInput.addEventListener("keyup", (e) => {
-  const {
-    value
-  } = e.target;
-
-  const searchQuery = value.toLowerCase();
-
+const searchInput = document.getElementById('searchInput')
+const storeSingers = document.getElementsByClassName('singers')
+searchInput.addEventListener('keyup', e => {
+  const { value } = e.target
+  const searchQuery = value.toLowerCase()
   for (const singerElement of storeSingers) {
-
-    let singers = singerElement.textContent.toLowerCase();
-
+    let singers = singerElement.textContent.toLowerCase()
     if (singers.includes(searchQuery)) {
-
-      singerElement.style.display = "block";
+      singerElement.style.display = 'block'
     } else {
-
-      singerElement.style.display = "none";
+      singerElement.style.display = 'none'
     }
   }
-});
+})
