@@ -29,7 +29,7 @@ fetch(url_db)
     return comment.map(function (data) {
       let commentDiv = document.createElement('div')
       commentDiv.id = 'commentDiv'
-      commentDiv.innerHTML = `<h5>Namn: ${data.name}</h5> <p>${data.comment}</p>`
+      commentDiv.innerHTML = `<div><h4>Namn: ${data.name}</h4></div> <div><h5>Artist: ${data.artist}</h5></div> <div><p>${data.comment}</p></div>`
       document.body.appendChild(commentDiv)
     })
   })
@@ -40,11 +40,15 @@ fetch(url_db)
 const dbForm = document.getElementById('formComment')
 const dbName = document.getElementById('name')
 const dbComment = document.getElementById('comment')
+const dbNumber = document.getElementById('number')
+const dbArtist = document.getElementById('artist')
 
 function newArtist(event) {
   event.preventDefault()
   let name = dbName.value
   let comment = dbComment.value
+  let artist = dbArtist.value
+  let number = dbNumber.value
   location.reload()
 
   async function postData(url = '', data = {}) {
@@ -58,7 +62,7 @@ function newArtist(event) {
       },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ name: name, comment: comment })
+      body: JSON.stringify({ name: name,  comment: comment, artist: artist, number: number })
     })
     return response.json()
   }

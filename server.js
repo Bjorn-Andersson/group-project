@@ -120,11 +120,15 @@ app.get('/comments', (req, res) => {
 app.post('/comments', (req, res) => {
   let name = req.body.name
   let comment = req.body.comment
+  let artist = req.body.artist
+  let number = req.body.number
 
   comments.insertOne(
     {
       name,
-      comment
+      comment,
+      artist,
+      number
     },
     (err, result) => {
       if (err) throw err
@@ -139,7 +143,7 @@ app.delete('/comments', (req, res) => {
 
   comments.deleteOne(
     {
-      name: name
+      name: number
     },
     (err, result) => {
       if (err) throw err
@@ -153,11 +157,12 @@ app.put('/comments', (req, res) => {
   let comment = req.body.comment
 
   comments.updateOne(
-    { name: name },
+    { name: number },
     {
       $set: {
         name: name,
-        comment: comment
+        comment: comment,
+        artist: artist
       }
     },
     (err, result) => {

@@ -28,14 +28,21 @@
         </ul>
       </div>
     </div>
+    <div id="formDiv">
     <form method="POST" id="formComment">
+      <p>Nummer:</p>
+      <p><input type="text" id="number" name="number" /></p>
       <p>Namn:</p>
       <p><input type="text" id="name" name="name" /></p>
+      <p>Artist:</p>
+      <p><input type="text" id="artist" name="artist" /></p>
       <p>Kommentar:</p>
-      <p><input type="text" id="comment" name="comment" /></p>
+      <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+
 
       <p><input type="submit" value="Lägg till" /></p>
     </form>
+  </div>
     <script src="artist.js"></script>
     <script src="img.js"></script>
   </body>
