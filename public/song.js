@@ -29,7 +29,7 @@ fetch(url + '/' + album)
     let entry = data
     return entry.map(function (data) {
       let back = document.querySelector('.backLink')
-      back.innerHTML = `<a href="./album.html?artist=${data.artistName}&album=${data.albumTitle}">back</a>`
+      back.innerHTML = `<a href="./album.html?artist=${data.artistName}&album=${data.albumTitle}">Back</a>`
     })
   })
   .catch(function (error) {
