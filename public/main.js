@@ -72,3 +72,56 @@ searchInput.addEventListener('keyup', e => {
     }
   }
 })
+
+//MySQL formulär
+const elForm = document.getElementById('formNewartist');
+const elartistName = document.getElementById('artistName');
+const elartistBirth = document.getElementById('artistBirth');
+const elartistCountry = document.getElementById('artistCountry');
+const elartistBackground = document.getElementById('artistBackground');
+
+
+function newFormartist(event) {
+  event.preventDefault();
+  let artistName = elartistName.value;
+  let artistBirth = elartistBirth.value;
+  let artistCountry = elartistCountry.value;
+  let artistBackground = elartistBackground.value;
+
+
+
+  async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify({ artistName: artistName, artistBirth: artistBirth, artistCountry: artistCountry, artistBackground: artistBackground })
+    });
+    return response.json();
+  }
+
+  postData('http://localhost:3000/artists')
+    .then((data) => {
+      console.log(data);
+      setTimeout(function() {
+        location.reload();
+        }, 3000);
+    });
+
+}
+
+elForm.addEventListener('submit', newFormartist, false);
+
+let btn = document.getElementById('btn')
+
+btn.addEventListener('click', () => {
+  Swal.fire(
+    'Du la till en artist!'
+  )
+})
