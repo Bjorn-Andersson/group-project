@@ -87,9 +87,7 @@
 .addForm {
   margin-bottom: 20px;
 }
-form > h3 {
-  margin-bottom: 20px;
-}
+
 #formDiv {
   display: flex;
   justify-content: center;
@@ -103,20 +101,14 @@ form > h3 {
   border-radius: 5px;
   box-shadow: 10px 5px 5px rgb(44, 2, 1);
   text-align: center;
-  margin: 10px 10% 10px 10%;
-  padding-top: 30px;
+  margin: 10px 10% 5px 10%;
+  padding-top: 50px;
 }
 
-input {
+#formDiv input {
   width: 200px;
   border-radius: 5px;
   box-shadow: 10px 5px 5px rgb(44, 2, 1);
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-#formDiv p {
-  font-size: 20px;
 }
 
 textarea {

@@ -101,6 +101,25 @@ app.get('/artists/:artist/:album/:song', (req, res) => {
   })
 })
 
+//MySQL forulär
+app.post('/artists', (req, res) => {
+  let sql = 'INSERT INTO artist (artistName, artistBirth, artistCountry, artistBackground) VALUES (?,?,?,?)'
+  let params = [req.body.artistName, req.body.artistBirth, req.body.artistCountry, req.body.artistBackground]
+  connection.query(sql, params, function (error, results) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
+app.put('/artists', (req, res) => {
+  let sql = 'CALL artistUpdate(?, ?, ?, ?, ?)'
+  let params = [req.body.artistID, req.body.artistName, req.body.artistBirth, req.body.artistCountry, req.body.artistBackground]
+  connection.query(sql, params, function (error, results) {
+    if (error) throw error
+    res.json(results)
+  })
+})
+
 // SQL ENDPOINTS END -----------------------------------------------------------------------
 
 //MongoDB ENDPOINTS START ------------------------------------------------------------------

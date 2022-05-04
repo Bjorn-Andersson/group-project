@@ -27,23 +27,33 @@
       </div>
       <section class="cd-main-content">
         <div id="addDiv">
-        <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Add Artist</a>
+        <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Lägg till en artist</a>
         <!-- your content here -->
       </div>
       </section>
-    
+
       <div class="cd-panel cd-panel--from-right js-cd-panel-main">
         <header class="cd-panel__header">
-          <h1>Add Artist</h1>
+          <h1>Lägg till en artist</h1>
           <a href="#0" class="cd-panel__close js-cd-close">Close</a>
         </header>
-    
+
         <div class="cd-panel__container">
           <div class="cd-panel__content">
             <div id="formFlexDiv">
-            <input type="text">
-            <input type="text">
-            <input type="text">
+              <form method="POST" id="formNewartist">
+                <h3>Lägg till en ny artist</h3>
+                <h4Artistnamn:</h4>
+                  <input type="text" id="artistName" name="artistName">
+                  <h4>När föddes artisten/När bildades bandet:</h4>
+                  <input type="text" id="artistBirth" name="artistBirth">
+                  <h4>Vilket land är artisten/bandet ifrån:</h4>
+                  <input type="text" id="artistCountry" name="artistCountry">
+                  <h4>Här kan du skriva in info om artisten:</h4>
+                  <textarea name="artistBackground" id="artistBackground" cols="30" rows="10"></textarea>
+
+                  <p><input id="btn" type="submit" value="Lägg till"></p>
+              </form>
           </div>
          </div> <!-- cd-panel__content -->
         </div> <!-- cd-panel__container -->
@@ -78,5 +88,6 @@
     </main>
     <script src="main.js"></script>
     <script src="js/slide.js"></script> <!-- Resource JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
