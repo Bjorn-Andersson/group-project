@@ -168,9 +168,11 @@ app.delete('/comments', (req, res) => {
 app.put('/comments', (req, res) => {
   let name = req.body.name
   let comment = req.body.comment
+  let artist = req.body.artist
+  let number = req.body.number
 
   comments.updateOne(
-    { name: number },
+    { name: name },
     {
       $set: {
         name: name,
