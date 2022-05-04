@@ -75,7 +75,11 @@
         <p>Filter:</p>
         <div class="aligner">
           <form>
-            <select class="form-control" id="selectGenre">
+            <select
+              onChange="filterGenre()"
+              class="form-control"
+              id="selectGenre"
+            >
               <option>Välj genre...</option>
             </select>
           </form>

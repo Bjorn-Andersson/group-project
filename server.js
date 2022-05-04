@@ -48,27 +48,29 @@ app.get('/artists', (req, res) => {
     res.json(results)
   })
 })
-app.get('/artists/genre', (req, res) => {
-  let sql = 'SELECT * from genre'
-  connection.query(sql, function (error, results, fields) {
-    if (error) throw error
-    res.json(results)
-  })
-})
 
-app.get('/artists', (req, res) => {
-  let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
-  connection.query(sql, [req.params.artist], function (error, results, fields) {
-    if (error) throw error
-    res.json(results)
-  })
-})
+// app.get('/artists', (req, res) => {
+//   let sql = 'SELECT * FROM artist WHERE artistPhoto = ?'
+//   connection.query(sql, [req.params.artist], function (error, results, fields) {
+//     if (error) throw error
+//     res.json(results)
+//   })
+// })
 
 app.delete('/artists', (req, res) => {
   let sql = 'CALL DeleteArtist(?)'
   connection.query(sql, [req.body.artistID], function (error) {
     if (error) throw error
     res.end('The artist has retired, permanently')
+  })
+})
+
+app.get('/artists/genre', (req, res) => {
+  let sql = `select artistName, artistBirth,artistCountry, genreName from artist join artistGenre aG on
+    artist.artistID = aG.artistGenreAid join genre on aG.artistGenreGid = genre.genreID`
+  connection.query(sql, function (error, results, fields) {
+    if (error) throw error
+    res.json(results)
   })
 })
 
