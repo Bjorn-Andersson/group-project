@@ -88,7 +88,9 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  border: solid black 2px ;
+  border: solid black 2px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgb(44, 2, 1);
   text-align: center;
   margin: 10px 10% 10px 10%;
   padding-top: 30px;
@@ -96,8 +98,30 @@ a {
 
 input {
   width: 200px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgb(44, 2, 1);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+#formDiv p {
+  font-size: 20px;
 }
 
 textarea {
   width: 200px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgb(44, 2, 1);
+}
+
+#commentDiv h4 {
+  font-size: 20px;
+}
+
+#commentDiv h5 {
+  font-size: 20px;
+}
+
+#commentDiv p {
+  font-size: 15px;
 }
