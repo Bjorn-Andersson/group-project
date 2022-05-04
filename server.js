@@ -152,11 +152,11 @@ app.post('/comments', (req, res) => {
 })
 
 app.delete('/comments', (req, res) => {
-  let name = req.body.name
+  let number = req.body.number
 
   comments.deleteOne(
     {
-      name: number
+      number: number
     },
     (err, result) => {
       if (err) throw err
