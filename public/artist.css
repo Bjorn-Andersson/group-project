@@ -96,13 +96,13 @@
 #commentDiv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   border: solid black 2px;
   border-radius: 5px;
   box-shadow: 10px 5px 5px rgb(44, 2, 1);
   text-align: center;
-  margin: 10px 10% 5px 10%;
-  padding-top: 50px;
+  margin: 10px 10% 15px 10%;
+  padding: 50px;
 }
 
 #formDiv input {
