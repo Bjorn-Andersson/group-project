@@ -12,6 +12,11 @@
       crossorigin="anonymous"
     />
     <title>Hemsida</title>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="css/demo.css"> <!-- Demo style -->
   </head>
 
   <body>
@@ -20,7 +25,29 @@
         <h1>Artistdatabas</h1>
         <p>Miniwiki för musik</p>
       </div>
-
+      <section class="cd-main-content">
+        <div id="addDiv">
+        <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Add Artist</a>
+        <!-- your content here -->
+      </div>
+      </section>
+    
+      <div class="cd-panel cd-panel--from-right js-cd-panel-main">
+        <header class="cd-panel__header">
+          <h1>Add Artist</h1>
+          <a href="#0" class="cd-panel__close js-cd-close">Close</a>
+        </header>
+    
+        <div class="cd-panel__container">
+          <div class="cd-panel__content">
+            <div id="formFlexDiv">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+          </div>
+         </div> <!-- cd-panel__content -->
+        </div> <!-- cd-panel__container -->
+      </div> <!-- cd-panel -->
       <div id="container md-form mt-0">
         <div id="search">
           <form>
@@ -46,5 +73,6 @@
       </div>
     </main>
     <script src="main.js"></script>
+    <script src="js/slide.js"></script> <!-- Resource JavaScript -->
   </body>
 </html>
