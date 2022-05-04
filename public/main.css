@@ -52,3 +52,14 @@ h3 {
   align-items: center;
   text-align: center;
 }
+
+#addDiv {
+  margin: 40px;
+}
+
+#formFlexDiv {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
