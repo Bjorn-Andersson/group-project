@@ -10,7 +10,6 @@ const url = 'http://localhost:3000/artists'
 fetch(url)
   .then(resp => resp.json())
   .then(function (data) {
-    console.log(data)
     let artists = data
     return artists.map(function (data) {
       let src = `img/${data.artistPhoto}`
@@ -25,41 +24,57 @@ fetch(url)
     console.log(error)
   })
 
+let genreArray = []
+let genreList = []
+const select = document.querySelector('#selectGenre')
 fetch(url + '/' + 'genre')
   .then(resp => resp.json())
   .then(function (data) {
-    console.log(data)
     let artists = data
     return artists.map(function (data) {
+      let artist = data.artistName
+      let genre = data.genreName
+      let genreObject = { genre, artist }
+      genreArray.push(genreObject)
       let option = document.createElement('option')
-      let select = document.querySelector('#selectGenre')
-      option.innerHTML = data.genreName
-      append(select, option)
+      if (genreList.indexOf(data.genreName) === -1) {
+        genreList.push(data.genreName)
+        genreList.forEach(entry => {
+          option.innerHTML = entry
+          append(select, option)
+        })
+      }
     })
   })
   .catch(function (error) {
     console.log(error)
   })
 
-const url_db = 'http://localhost:3000/comments'
-fetch(url_db)
-  .then(resp => resp.json())
-  .then(function (data) {
-    console.log(data.comments)
-    let comments = data.comments
-    return comments.map(function (data) {
-      let commentDiv = document.getElementById('comments')
-      commentDiv.innerHTML = `<form>
-
-          </form>`
+const storeSingers = document.getElementsByClassName('singers')
+function filterGenre() {
+  for (const singerElement of storeSingers) {
+    singerElement.style.display = 'none'
+  }
+  var value = select.options[select.selectedIndex].value
+  if (value === 'Välj genre...') {
+    for (const singerElement of storeSingers) {
+      singerElement.style.display = 'flex'
+    }
+  } else {
+    genreArray.forEach(entry => {
+      if (entry.genre === value) {
+        for (let singerElement of storeSingers) {
+          let singers = singerElement.textContent
+          if (singers.includes(entry.artist)) {
+            singerElement.style.display = 'flex'
+          }
+        }
+      }
     })
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
+  }
+}
 
 const searchInput = document.getElementById('searchInput')
-const storeSingers = document.getElementsByClassName('singers')
 searchInput.addEventListener('keyup', e => {
   const { value } = e.target
   const searchQuery = value.toLowerCase()
@@ -72,3 +87,30 @@ searchInput.addEventListener('keyup', e => {
     }
   }
 })
+
+// select.addEventListener('', () => {
+//   for (const singerElement of storeSingers) {
+//     if (genreArray.includes(option.value)) {
+//       // eller option.target.value ?
+//       singerElement.style.display = 'flex'
+//     } else {
+//       singerElement.style.display = 'none'
+//     }
+//   }
+// })
+
+const url_db = 'http://localhost:3000/comments'
+fetch(url_db)
+  .then(resp => resp.json())
+  .then(function (data) {
+    let comments = data.comments
+    return comments.map(function (data) {
+      let commentDiv = document.getElementById('comments')
+      commentDiv.innerHTML = `<form>
+
+          </form>`
+    })
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
