@@ -10,7 +10,7 @@ fetch(url + '/' + album)
     let entry = data
     return entry.map(function (data) {
       let li = document.createElement('li')
-      li.innerHTML = `<a href="./song.html?artist=${data.artistName}&album=${data.albumTitle}&song=${data.songTitle}">${data.songTitle}</a>`
+      li.innerHTML = `<a class="link" href="./song.html?artist=${data.artistName}&album=${data.albumTitle}&song=${data.songTitle}">${data.songTitle}</a>`
       document.querySelector('#ulAlbum').appendChild(li)
       document.querySelector('.center').textContent = data.albumTitle
       document.querySelector('#albumTitle').textContent = data.albumTitle
@@ -26,7 +26,7 @@ fetch(url)
     let entry = data
     return entry.map(function (data) {
       let back = document.querySelector('.backLink')
-      back.innerHTML = `<a href="./artist.html?artist=${data.artistName}">Tillbaka</a>`
+      back.innerHTML = `<a class="link" href="./artist.html?artist=${data.artistName}">Tillbaka</a>`
     })
   })
   .catch(function (error) {
